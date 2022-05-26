@@ -1,0 +1,10 @@
+.modal-card {
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal-card p {
+  margin-top: 5px;
+}

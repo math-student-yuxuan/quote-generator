@@ -13,9 +13,10 @@ function Modal(props) {
       />
       <div className="modal-card">
         <Card>{props.children}</Card>
-        <a href={props.url}>
-          <p>{props.link}</p>
-        </a>
+        <p id="reference">
+          by
+          <a href={props.url}>{props.link}</a>
+        </p>
       </div>
     </>
   );

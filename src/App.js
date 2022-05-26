@@ -2,7 +2,7 @@ import "./App.css";
 import Modal from "./UI/Modal";
 import { useState } from "react";
 import quotesData, { colors } from "./data";
-import { fadeColor, fadeTextIn, fadeTextOut } from "./transition";
+import { fadeColor, combine } from "./transition";
 function getRandomInd(n) {
   return Math.floor(Math.random() * n);
 }
@@ -19,6 +19,8 @@ function App() {
     "This is a quote and it is now very long long long long long",
     "author",
   ]);
+
+  const anim = combine(prevColor, color);
   const colorAnim = fadeColor(prevColor, color);
   const colorChangeStyle = {
     backgroundColor: color,
@@ -26,14 +28,13 @@ function App() {
     animationIterationCount: 1,
     animationName: "fadeColor",
   };
-  const textAnimIn = fadeTextIn(prevColor, color);
   const textChangeStyleIn = {
     color: color,
     animationDuration: "2s",
     animationIterationCount: 1,
     animationName: "fadeTextIn",
+    transform: "translateY(0)",
   };
-  const textAnimOut = fadeTextOut(prevColor, color);
   const textChangeStyleOut = {
     color: color,
     animationDuration: "2s",
@@ -47,15 +48,16 @@ function App() {
     setColor(colors[getRandomInd(colors.length)]);
     setPrevQuote(quote);
     setQuote(quotesData[getRandomInd(quotesData.length)]);
-    console.log(prevColor, color);
   }
   return (
     <div className="App">
-      <style children={(colorAnim, textAnimIn, textAnimOut)} />
+      <style children={anim} />
       <Modal
         color={color}
         colorAnim={colorAnim}
         colorChangeStyle={colorChangeStyle}
+        url="#"
+        link=" yukizhang"
       >
         <div
           className="quote"
@@ -75,8 +77,11 @@ function App() {
         </div>
         <div className="links">
           <div className="social-links">
-            <button>F</button>
-            <button>T</button>
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+              </svg>
+            </button>
           </div>
           <button
             key={color}

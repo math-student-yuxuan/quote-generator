@@ -6,6 +6,10 @@ button {
   color: white;
   font-size: 1.5rem;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 .links {
   display: flex;
   justify-content: space-between;
@@ -16,12 +20,7 @@ button {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-}
-.social-links button:first-of-type {
-  background-color: lightblue;
-}
-.social-links button:last-of-type {
-  background-color: lightyellow;
+  color: white;
 }
 .quote {
   width: 100%;
